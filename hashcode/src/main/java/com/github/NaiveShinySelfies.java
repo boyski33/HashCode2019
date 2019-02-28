@@ -12,16 +12,17 @@ import static java.util.Collections.disjoint;
 
 public class NaiveShinySelfies implements DataSet {
 
-    private static final int ATTEMPTS = 5_000_000;
+    private static final int ATTEMPTS = 50_000_000;
 
     @Override
-    public List<String> run() throws IOException, URISyntaxException {
+    public InterestResult run() throws IOException, URISyntaxException {
         InputDataSetReader reader = new InputDataSetReader();
+        int totalScore = 0;
 
         List<Picture> pictures = reader.read("e_shiny_selfies.txt");
 
         Random random = new Random();
-        List<String> result = new ArrayList<>();
+        List<String> ids = new ArrayList<>();
 
         int iterrationsLeft = ATTEMPTS;
         while (iterrationsLeft-- > 0 && pictures.size() > 3) {
@@ -34,8 +35,9 @@ public class NaiveShinySelfies implements DataSet {
             Slide second = Slide.of(rightFirst, rightSecond);
 
             if (!disjoint(first.tags, second.tags)) {
-                result.add(String.valueOf(first.printableIds()));
-                result.add(String.valueOf(second.printableIds()));
+                ids.add(String.valueOf(first.printableIds()));
+                ids.add(String.valueOf(second.printableIds()));
+                totalScore += first.interestScore(second);
             } else {
                 pictures.add(leftFirst);
                 pictures.add(leftSecond);
@@ -47,14 +49,14 @@ public class NaiveShinySelfies implements DataSet {
 
         for (int i = 0; i < pictures.size(); i++) {
             if (i == pictures.size() - 1) {
-                result.add(Slide.of(pictures.get(i)).printableIds());
+                ids.add(Slide.of(pictures.get(i)).printableIds());
                 break;
             }
 
-            result.add(Slide.of(pictures.get(i++), pictures.get(i)).printableIds());
+            ids.add(Slide.of(pictures.get(i++), pictures.get(i)).printableIds());
         }
 
-        return result;
+        return new InterestResult(totalScore, ids);
 
     }
 

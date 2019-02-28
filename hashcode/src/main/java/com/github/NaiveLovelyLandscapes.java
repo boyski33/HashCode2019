@@ -1,5 +1,7 @@
 package com.github;
 
+import static java.util.Collections.disjoint;
+
 import com.github.io.InputDataSetReader;
 
 import java.io.IOException;
@@ -8,31 +10,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static java.util.Collections.disjoint;
-
 public class NaiveLovelyLandscapes implements DataSet {
 
-    private static final int ATTEMPTS = 5_000_000;
-    private int count = 0;
+    private static final int ATTEMPTS = 500_000;
 
     @Override
-    public List<String> run() throws IOException, URISyntaxException {
+    public InterestResult run() throws IOException, URISyntaxException {
+        int count = 0;
+        int totalScore = 0;
+
         InputDataSetReader reader = new InputDataSetReader();
+        List<String> ids = new ArrayList<>();
 
         List<Picture> pictures = reader.read("b_lovely_landscapes.txt");
 
         Random random = new Random();
-        List<String> result = new ArrayList<>();
-
 
         int iterrationsLeft = ATTEMPTS;
         while (iterrationsLeft-- > 0 && pictures.size() > 1) {
             Picture first = pictures.remove(random.nextInt(pictures.size()));
             Picture second = pictures.remove(random.nextInt(pictures.size()));
 
+
             if (!disjoint(first.tags, second.tags)) {
-                result.add(String.valueOf(first.id));
-                result.add(String.valueOf(second.id));
+                Slide fSlide = Slide.of(first);
+                Slide sSlide = Slide.of(second);
+                totalScore += fSlide.interestScore(sSlide);
+
+
+                ids.add(String.valueOf(first.id));
+                ids.add(String.valueOf(second.id));
             } else {
                 pictures.add(first);
                 pictures.add(second);
@@ -41,11 +48,10 @@ public class NaiveLovelyLandscapes implements DataSet {
         }
 
         for (Picture picture : pictures) {
-            result.add(String.valueOf(picture));
+            ids.add(String.valueOf(picture));
         }
 
-        return result;
-
+        return new InterestResult(totalScore, ids);
     }
 
 }

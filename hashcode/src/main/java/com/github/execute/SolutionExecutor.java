@@ -20,7 +20,7 @@ public class SolutionExecutor {
     public void runAll() throws IOException, URISyntaxException {
         for (int i = 0; i < this.runCount; i++) {
             long startTime = System.nanoTime();
-            new GenerateOutput().generate(dataSet.getClass().getName() + i, dataSet.run());
+            new GenerateOutput().generate(dataSet.getClass().getName() + i, dataSet.run().ids);
             long endTime = System.nanoTime();
             System.out.println((endTime - startTime) / 1_000_000_000);
         }
