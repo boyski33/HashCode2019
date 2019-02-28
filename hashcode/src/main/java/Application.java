@@ -1,3 +1,4 @@
+import com.github.NaivePetPictures;
 import com.github.NaiveShinySelfies;
 import com.github.execute.SolutionExecutor;
 import com.github.io.InputDataSetReader;
@@ -12,6 +13,7 @@ public class Application {
         InputDataSetReader reader = new InputDataSetReader();
 
         NaiveLovelyLandscapes lovelyLandscapes = new NaiveLovelyLandscapes();
+        NaivePetPictures petPictures = new NaivePetPictures();
         NaiveShinySelfies selfies = new NaiveShinySelfies();
 
         SolutionExecutor executor = new SolutionExecutor(5, lovelyLandscapes);

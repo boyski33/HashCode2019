@@ -15,8 +15,9 @@ public class NaivePetPictures implements DataSet {
     private static final int ATTEMPTS = 5_000_000;
 
     @Override
-    public List<String> run() throws IOException, URISyntaxException {
+    public InterestResult run() throws IOException, URISyntaxException {
         InputDataSetReader reader = new InputDataSetReader();
+        int score = 0;
 
         List<Picture> pictures = reader.read("d_pet_pictures.txt");
 
@@ -31,6 +32,8 @@ public class NaivePetPictures implements DataSet {
             if (!disjoint(first.slide.tags, second.slide.tags)) {
                 result.add(String.valueOf(first.slide.printableIds()));
                 result.add(String.valueOf(second.slide.printableIds()));
+                score += first.slide.interestScore(second.slide);
+
             } else {
                 pictures.addAll(first.picturesUsed);
                 pictures.addAll(second.picturesUsed);
@@ -47,7 +50,7 @@ public class NaivePetPictures implements DataSet {
             result.add(Slide.of(pictures.get(i++), pictures.get(i)).printableIds());
         }
 
-        return result;
+        return new InterestResult(score, result);
 
     }
 

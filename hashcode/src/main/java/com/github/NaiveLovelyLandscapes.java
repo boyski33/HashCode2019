@@ -47,7 +47,7 @@ public class NaiveLovelyLandscapes implements DataSet {
         }
 
         for (Picture picture : pictures) {
-            ids.add(String.valueOf(picture));
+            ids.add(String.valueOf(picture.id));
         }
 
         return new InterestResult(totalScore, ids);
