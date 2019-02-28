@@ -1,6 +1,5 @@
 package com.github;
 
-import com.github.io.GenerateOutput;
 import com.github.io.InputDataSetReader;
 
 import java.io.IOException;
@@ -39,6 +38,10 @@ public class NaiveLovelyLandscapes implements DataSet {
                 pictures.add(second);
             }
 
+        }
+
+        for (Picture picture : pictures) {
+            result.add(String.valueOf(picture));
         }
 
         return result;
