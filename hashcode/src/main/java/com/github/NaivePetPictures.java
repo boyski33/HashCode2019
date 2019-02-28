@@ -29,6 +29,10 @@ public class NaivePetPictures implements DataSet {
             PicturesForSlide first = getSlide(pictures);
             PicturesForSlide second = getSlide(pictures);
 
+            if (first == null || second == null) {
+                return new InterestResult(score, result);
+            }
+
             if (!disjoint(first.slide.tags, second.slide.tags)) {
                 result.add(String.valueOf(first.slide.printableIds()));
                 result.add(String.valueOf(second.slide.printableIds()));
@@ -41,19 +45,9 @@ public class NaivePetPictures implements DataSet {
 
         }
 
-        for (int i = 0; i < pictures.size(); i++) {
-            if (i == pictures.size() - 1) {
-                result.add(Slide.of(pictures.get(i)).printableIds());
-                break;
-            }
-
-            result.add(Slide.of(pictures.get(i++), pictures.get(i)).printableIds());
-        }
-
         return new InterestResult(score, result);
 
     }
-
 
     private PicturesForSlide getSlide(List<Picture> pictures) {
         Random random = new Random();
@@ -65,7 +59,11 @@ public class NaivePetPictures implements DataSet {
 
         List<Picture> unused = new ArrayList<>();
         Picture second = null;
+
+        // this can timeout
+        int maxAttempts = 1000;
         while (second == null) {
+
             second = pictures.remove(random.nextInt(pictures.size()));
             if (second.orientation == 'V') {
                 pictures.addAll(unused);
@@ -73,10 +71,13 @@ public class NaivePetPictures implements DataSet {
             }
 
             unused.add(second);
+            if (maxAttempts-- <= 0) {
+                return null;
+            }
         }
 
         pictures.addAll(unused);
-        return PicturesForSlide.of(Slide.of(pic), List.of(pic));
+        return null;
     }
 
     private static class PicturesForSlide {
