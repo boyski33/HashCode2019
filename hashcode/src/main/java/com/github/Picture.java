@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Picture {
 
-    static int currentId = 0;
+    public static int currentId = 0;
 
     char orientation;
     Set<String> tags;

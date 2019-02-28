@@ -11,10 +11,12 @@ import java.util.Random;
 
 import static java.util.Collections.disjoint;
 
-public class NaiveLovelyLandscapes {
+public class NaiveLovelyLandscapes implements DataSet {
 
-    private static final int ATTEMPTS = 1_000_000;
+    private static final int ATTEMPTS = 100_000;
+    private int count = 0;
 
+    @Override
     public List<String> run() throws IOException, URISyntaxException {
         InputDataSetReader reader = new InputDataSetReader();
 
@@ -39,7 +41,7 @@ public class NaiveLovelyLandscapes {
 
         }
 
-        new GenerateOutput().generate("b_lovely_landscapes", result);
+        new GenerateOutput().generate("b_lovely_landscapes" + count++, result);
 
 
         return result;

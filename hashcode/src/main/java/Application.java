@@ -1,3 +1,4 @@
+import com.github.execute.SolutionExecutor;
 import com.github.io.InputDataSetReader;
 import com.github.NaiveLovelyLandscapes;
 
@@ -11,8 +12,8 @@ public class Application {
 
         NaiveLovelyLandscapes lovelyLandscapes = new NaiveLovelyLandscapes();
 
-        lovelyLandscapes.run()
-                .forEach(System.out::println);
+        SolutionExecutor executor = new SolutionExecutor(5, lovelyLandscapes);
 
+        executor.runAll();
     }
 }

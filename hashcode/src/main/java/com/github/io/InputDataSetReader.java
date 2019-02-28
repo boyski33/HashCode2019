@@ -20,6 +20,8 @@ public class InputDataSetReader {
         URI uri = resource.toURI();
         final Path path = Paths.get(uri);
 
+        Picture.currentId = 0;
+
         return Files.lines(path)
                 .skip(1)
                 .map(Picture::fromInputLine)
