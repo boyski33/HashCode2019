@@ -1,14 +1,15 @@
 package com.github;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Picture {
 
     char orientation;
-    List<String> tags;
+    Set<String> tags;
 
-    public Picture(char orientation, List<String> tags) {
+    public Picture(char orientation, Set<String> tags) {
         this.orientation = orientation;
         this.tags = tags;
     }
@@ -19,11 +20,8 @@ public class Picture {
 
         char orientation = split[0].charAt(0);
 
-        List<String> currentTags = new ArrayList<>();
-
-        for (int i = 2; i < split.length; i++) {
-            currentTags.add(split[i]);
-        }
+        Set<String> currentTags = new HashSet<>(
+                Arrays.asList(split).subList(2, split.length));
 
         return new Picture(orientation, currentTags);
 
