@@ -5,5 +5,5 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 public interface DataSet {
-    List<String> run() throws IOException, URISyntaxException;
+    InterestResult run() throws IOException, URISyntaxException;
 }
