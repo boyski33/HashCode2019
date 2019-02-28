@@ -1,4 +1,6 @@
-package com.github;
+package com.github.io;
+
+import com.github.Picture;
 
 import java.io.IOException;
 import java.net.URI;

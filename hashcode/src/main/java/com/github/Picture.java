@@ -6,12 +6,16 @@ import java.util.Set;
 
 public class Picture {
 
+    static int currentId = 0;
+
     char orientation;
     Set<String> tags;
+    int id;
 
     public Picture(char orientation, Set<String> tags) {
         this.orientation = orientation;
         this.tags = tags;
+        this.id = currentId++;
     }
 
 
@@ -48,6 +52,7 @@ public class Picture {
     @Override
     public String toString() {
         return "Picture{" +
+                "id=" + id +
                 "orientation=" + orientation +
                 ", tags=" + tags +
                 '}';
