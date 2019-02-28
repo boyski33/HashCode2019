@@ -12,11 +12,10 @@ import java.util.Random;
 
 public class NaiveLovelyLandscapes implements DataSet {
 
-    private static final int ATTEMPTS = 500_000;
+    private static final int ATTEMPTS = 15_000_000;
 
     @Override
     public InterestResult run() throws IOException, URISyntaxException {
-        int count = 0;
         int totalScore = 0;
 
         InputDataSetReader reader = new InputDataSetReader();
