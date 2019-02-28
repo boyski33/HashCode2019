@@ -2,6 +2,7 @@ package com.github.execute;
 
 import com.github.DataSet;
 import com.github.NaiveLovelyLandscapes;
+import com.github.io.GenerateOutput;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -19,7 +20,7 @@ public class SolutionExecutor {
     public void runAll() throws IOException, URISyntaxException {
         for (int i = 0; i < this.runCount; i++) {
             long startTime = System.nanoTime();
-            dataSet.run();
+            new GenerateOutput().generate(dataSet.getClass().getName() + i, dataSet.run());
             long endTime = System.nanoTime();
             System.out.println((endTime - startTime) / 1_000_000_000);
         }

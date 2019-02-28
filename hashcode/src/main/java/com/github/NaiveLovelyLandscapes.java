@@ -13,7 +13,7 @@ import static java.util.Collections.disjoint;
 
 public class NaiveLovelyLandscapes implements DataSet {
 
-    private static final int ATTEMPTS = 100_000;
+    private static final int ATTEMPTS = 5_000_000;
     private int count = 0;
 
     @Override
@@ -40,9 +40,6 @@ public class NaiveLovelyLandscapes implements DataSet {
             }
 
         }
-
-        new GenerateOutput().generate("b_lovely_landscapes" + count++, result);
-
 
         return result;
 
