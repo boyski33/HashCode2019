@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static java.util.Collections.disjoint;
+
 public class NaiveLovelyLandscapes {
+
+    private static final int ATTEMPTS = 1_000_000;
 
     public List<String> run() throws IOException, URISyntaxException {
         InputDataSetReader reader = new InputDataSetReader();
@@ -20,9 +24,19 @@ public class NaiveLovelyLandscapes {
         List<String> result = new ArrayList<>();
 
 
-        while (!pictures.isEmpty()) {
-            Picture picture = pictures.remove(random.nextInt(pictures.size()));
-            result.add(String.valueOf(picture.id));
+        int iterrationsLeft = ATTEMPTS;
+        while (iterrationsLeft-- > 0 && pictures.size() > 1) {
+            Picture first = pictures.remove(random.nextInt(pictures.size()));
+            Picture second = pictures.remove(random.nextInt(pictures.size()));
+
+            if (!disjoint(first.tags, second.tags)) {
+                result.add(String.valueOf(first.id));
+                result.add(String.valueOf(second.id));
+            } else {
+                pictures.add(first);
+                pictures.add(second);
+            }
+
         }
 
         new GenerateOutput().generate("b_lovely_landscapes", result);
