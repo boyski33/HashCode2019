@@ -1,29 +1,30 @@
-package com.github;
+package com.github.algorithm;
 
 import static com.github.DataSetUtil.getRandomSlide;
 import static java.util.Collections.disjoint;
 
-import com.github.io.InputDataSetReader;
+import com.github.InterestResult;
+import com.github.Picture;
+import com.github.PicturesForSlide;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NaiveMemorableMoments implements DataSet {
+public class NaiveRandomAlgorithm implements Algorithm {
 
-    private static final int ATTEMPTS = 15_000_000;
+    private int attempts;
+
+    public NaiveRandomAlgorithm(int attempts) {
+        this.attempts = attempts;
+    }
 
     @Override
-    public InterestResult run() throws IOException, URISyntaxException {
-        InputDataSetReader reader = new InputDataSetReader();
+    public InterestResult calculateScore(List<Picture> pictures) {
+
         int score = 0;
-
-        List<Picture> pictures = reader.read("c_memorable_moments.txt");
-
         List<String> result = new ArrayList<>();
 
-        int iterationsLeft = ATTEMPTS;
+        int iterationsLeft = attempts;
         while (iterationsLeft-- > 0 && pictures.size() > 3) {
 
             PicturesForSlide first = getRandomSlide(pictures);
@@ -47,5 +48,4 @@ public class NaiveMemorableMoments implements DataSet {
 
         return new InterestResult(score, result);
     }
-
 }

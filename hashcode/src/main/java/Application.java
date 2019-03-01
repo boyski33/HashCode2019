@@ -1,5 +1,6 @@
 import com.github.NaiveMemorableMoments;
 import com.github.NaivePetPictures;
+import com.github.algorithm.NaiveRandomAlgorithm;
 import com.github.NaiveShinySelfies;
 import com.github.execute.SolutionExecutor;
 import com.github.io.InputDataSetReader;
@@ -15,10 +16,10 @@ public class Application {
 
         NaiveLovelyLandscapes lovelyLandscapes = new NaiveLovelyLandscapes();
         NaiveMemorableMoments memorableMoments = new NaiveMemorableMoments();
-        NaivePetPictures petPictures = new NaivePetPictures();
+        NaivePetPictures petPictures = new NaivePetPictures(new NaiveRandomAlgorithm(1_000_000));
         NaiveShinySelfies selfies = new NaiveShinySelfies();
 
-        SolutionExecutor executor = new SolutionExecutor(500, memorableMoments);
+        SolutionExecutor executor = new SolutionExecutor(5, petPictures);
 
         executor.runAll();
     }

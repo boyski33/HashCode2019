@@ -6,8 +6,8 @@ import java.util.Set;
 
 public class Slide {
 
-    List<Integer> ids;
-    Set<String> tags;
+    public List<Integer> ids;
+    public Set<String> tags;
 
     public Slide(List<Integer> ids, Set<String> tags) {
         this.ids = ids;

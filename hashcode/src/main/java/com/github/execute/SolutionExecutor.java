@@ -2,12 +2,10 @@ package com.github.execute;
 
 import com.github.DataSet;
 import com.github.InterestResult;
-import com.github.NaiveLovelyLandscapes;
 import com.github.io.GenerateOutput;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.sql.Timestamp;
 
 public class SolutionExecutor {
     private int runCount;

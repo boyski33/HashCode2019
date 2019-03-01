@@ -1,5 +1,7 @@
 package com.github;
 
+import static java.util.Collections.disjoint;
+
 import com.github.io.InputDataSetReader;
 
 import java.io.IOException;
@@ -7,8 +9,6 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import static java.util.Collections.disjoint;
 
 public class NaiveShinySelfies implements DataSet {
 

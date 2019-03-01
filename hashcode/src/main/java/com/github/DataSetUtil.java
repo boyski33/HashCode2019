@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-class DataSetUtil {
-    static PicturesForSlide getRandomSlide(List<Picture> pictures) {
+public class DataSetUtil {
+    public static PicturesForSlide getRandomSlide(List<Picture> pictures) {
         Random random = new Random();
         Picture pic = pictures.remove(random.nextInt(pictures.size()));
 

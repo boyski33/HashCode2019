@@ -1,13 +1,10 @@
 package com.github;
 
-import com.github.Picture;
-import com.github.Slide;
-
 import java.util.List;
 
-class PicturesForSlide {
-    Slide slide;
-    List<Picture> picturesUsed;
+public class PicturesForSlide {
+    public Slide slide;
+    public List<Picture> picturesUsed;
 
     private PicturesForSlide() {
     }
