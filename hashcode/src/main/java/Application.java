@@ -15,11 +15,11 @@ public class Application {
         InputDataSetReader reader = new InputDataSetReader();
 
         NaiveLovelyLandscapes lovelyLandscapes = new NaiveLovelyLandscapes();
-        NaiveMemorableMoments memorableMoments = new NaiveMemorableMoments();
+        NaiveMemorableMoments memorableMoments = new NaiveMemorableMoments(new NaiveRandomAlgorithm(500_000));
         NaivePetPictures petPictures = new NaivePetPictures(new NaiveRandomAlgorithm(1_000_000));
         NaiveShinySelfies selfies = new NaiveShinySelfies();
 
-        SolutionExecutor executor = new SolutionExecutor(5, petPictures);
+        SolutionExecutor executor = new SolutionExecutor(5, memorableMoments);
 
         executor.runAll();
     }
