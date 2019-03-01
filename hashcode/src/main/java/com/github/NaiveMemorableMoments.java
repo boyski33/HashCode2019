@@ -12,7 +12,7 @@ import static java.util.Collections.disjoint;
 
 public class NaiveMemorableMoments implements DataSet {
 
-    private static final int ATTEMPTS = 5_000_000;
+    private static final int ATTEMPTS = 15_000_000;
 
     @Override
     public InterestResult run() throws IOException, URISyntaxException {
