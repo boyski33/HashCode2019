@@ -24,8 +24,8 @@ public class NaiveShinySelfies implements DataSet {
         Random random = new Random();
         List<String> ids = new ArrayList<>();
 
-        int iterrationsLeft = ATTEMPTS;
-        while (iterrationsLeft-- > 0 && pictures.size() > 3) {
+        int iterationsLeft = ATTEMPTS;
+        while (iterationsLeft-- > 0 && pictures.size() > 3) {
             Picture leftFirst = pictures.remove(random.nextInt(pictures.size()));
             Picture leftSecond = pictures.remove(random.nextInt(pictures.size()));
             Picture rightFirst = pictures.remove(random.nextInt(pictures.size()));

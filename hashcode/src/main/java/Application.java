@@ -18,7 +18,7 @@ public class Application {
         NaivePetPictures petPictures = new NaivePetPictures();
         NaiveShinySelfies selfies = new NaiveShinySelfies();
 
-        SolutionExecutor executor = new SolutionExecutor(500, petPictures);
+        SolutionExecutor executor = new SolutionExecutor(500, memorableMoments);
 
         executor.runAll();
     }

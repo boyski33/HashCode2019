@@ -23,8 +23,8 @@ public class NaivePetPictures implements DataSet {
 
         List<String> result = new ArrayList<>();
 
-        int iterrationsLeft = ATTEMPTS;
-        while (iterrationsLeft-- > 0 && pictures.size() > 3) {
+        int iterationsLeft = ATTEMPTS;
+        while (iterationsLeft-- > 0 && pictures.size() > 3) {
 
             PicturesForSlide first = getSlide(pictures);
             PicturesForSlide second = getSlide(pictures);

@@ -25,8 +25,8 @@ public class NaiveLovelyLandscapes implements DataSet {
 
         Random random = new Random();
 
-        int iterrationsLeft = ATTEMPTS;
-        while (iterrationsLeft-- > 0 && pictures.size() > 1) {
+        int iterationsLeft = ATTEMPTS;
+        while (iterationsLeft-- > 0 && pictures.size() > 1) {
             Picture first = pictures.remove(random.nextInt(pictures.size()));
             Picture second = pictures.remove(random.nextInt(pictures.size()));
 
