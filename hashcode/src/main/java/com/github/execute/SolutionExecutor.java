@@ -13,7 +13,7 @@ public class SolutionExecutor {
     private int runCount;
     private DataSet dataSet;
     private int maxScore = 0;
-    InterestResult theResult;
+    private InterestResult theResult;
 
     public SolutionExecutor(int runCount, DataSet dataSet) {
         this.runCount = runCount;
